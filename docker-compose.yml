@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  app:
+    build: ./infra/php
+    volumes:
+      - /mnt/sda1/tmp/backend:/work
+
+  # 追記
+  web:
+    image: nginx:1.18-alpine
+    ports:
+      - 10080:80
+    volumes:
+      - /mnt/sda1/tmp/backend:/work
+      - /mnt/sda1/tmp/handson_nginx:/etc/nginx/conf.d
+    working_dir: /work
