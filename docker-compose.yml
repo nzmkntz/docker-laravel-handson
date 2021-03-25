@@ -14,3 +14,12 @@ services:
       - /mnt/sda1/tmp/backend:/work
       - /mnt/sda1/tmp/handson_nginx:/etc/nginx/conf.d
     working_dir: /work
+
+  # 追記
+  db:
+    build: ./infra/mysql
+    volumes:
+      - db-store:/var/lib/mysql
+
+volumes:
+  db-store:
